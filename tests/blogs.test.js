@@ -11,9 +11,15 @@ afterEach(async () => {
   await page.close();
 });
 
-test('When logged in,see create form successfully', async () => {
-  await page.login();
-  await page.click('a.btn-floating');
-  const content = await page.getContentsOf('form label');
-  expect(content).toEqual('Blog Title');
+//To group test on spesific occations
+describe('When logged in', () => {
+  beforeEach(async () => {
+    await page.login();
+    await page.click('a.btn-floating');
+  });
+
+  test('can see create form successfully', async () => {
+    const content = await page.getContentsOf('form label');
+    expect(content).toEqual('Blog Title');
+  });
 });
