@@ -61,3 +61,37 @@ describe('When logged in', () => {
     });
   });
 });
+
+describe('When sign out,', () => {
+  test('trying to create blog', async () => {
+    const result = await page.evaluate(async () => {
+      return fetch('api/blogs', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: "Ferhat's Title",
+          content: 'Ferhat Adibelli content creator',
+        }),
+      }).then((res) => res.json());
+    });
+
+    expect(result).toEqual({ error: 'You must log in!' });
+  });
+
+  test('trying to get all blogs', async () => {
+    const result = await page.evaluate(async () => {
+      return fetch('api/blogs', {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => res.json());
+    });
+
+    expect(result).toEqual({ error: 'You must log in!' });
+  });
+});

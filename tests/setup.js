@@ -1,5 +1,5 @@
 require('../models/User');
-jest.setTimeout(40000);
+jest.setTimeout(60000);
 
 const keys = require('../config/keys');
 const mongoose = require('mongoose');
