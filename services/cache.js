@@ -28,7 +28,6 @@ mongoose.Query.prototype.exec = async function () {
   const cacheValues = await client.hget(this.hashKey, key);
 
   if (cacheValues) {
-    console.log('Coming from cache');
     const doc = JSON.parse(cacheValues);
     return Array.isArray(doc)
       ? doc.map((d) => new this.model(d))
