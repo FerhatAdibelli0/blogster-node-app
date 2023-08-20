@@ -18,7 +18,7 @@ module.exports = (app) => {
       'putObject',
       {
         Bucket: 'my-node-advanced-app',
-        ContentType: 'jpeg',
+        ContentType: 'image/jpeg',
         Key: key,
       },
       (err, url) => {
